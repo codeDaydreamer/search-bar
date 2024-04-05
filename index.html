@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <title>Search Bar</title>
+</head>
+<body>
+    <div class="container">
+        <div class="icon">
+            <i class="search fa fa-search"></i>
+        </div>
+        <div class="input">
+            <input type="text" placeholder="Search any book..." id="search">
+            <i class="clear fa fa-times"></i>
+        </div>
+    </div>
+    <script>
+        document.addEventListener("DOMContentLoaded", function() {
+    const searchInput = document.getElementById("search");
+    const searchIcon = document.querySelector(".icon .search");
+    const clearIcon = document.querySelector(".clear");
+    const container = document.querySelector(".container");
+
+    // Function to handle search process
+    function performSearch() {
+        // Change search icon to spinner icon
+        searchIcon.classList.add("fa-spinner", "fa-spin");
+        searchIcon.classList.remove("fa-search");
+
+        // Simulate search process with setTimeout
+        setTimeout(function() {
+            // Change spinner icon back to search icon after search process completes
+            searchIcon.classList.remove("fa-spinner", "fa-spin");
+            searchIcon.classList.add("fa-search");
+        }, 2000); // Adjust the time according to your actual search process
+    }
+
+    // Function to toggle the container's "active" class
+    function toggleContainer() {
+        container.classList.toggle("active");
+    }
+
+    // Event listener for keydown event on search input
+    searchInput.addEventListener("keydown", function(event) {
+        // Check if Enter key is pressed
+        if (event.key === "Enter") {
+            performSearch();
+            toggleContainer();
+        }
+    });
+
+    // Event listener for click event on search icon
+    searchIcon.addEventListener("click", function() {
+        performSearch();
+        toggleContainer();
+    });
+
+    // Event listener for click event on clear icon
+    clearIcon.addEventListener("click", function() {
+        searchInput.value = "";
+    });
+});
+
+    
+
+   
+
+
+
+
+   
+
+/*
+    let search = document.querySelector(`.search`);
+        let clear = document.querySelector(`.clear`);
+
+        search.onclick = function(){
+            document.querySelector(`.container`).classList.toggle(`active`);  
+        }
+        clear.onclick = function(){
+            document.getElementById(`search`).value= ``;  
+        }*/
+
+    </script>
+</body>
+</html>
